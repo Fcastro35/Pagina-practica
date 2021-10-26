@@ -1,0 +1,720 @@
+/**FUENTES**/
+
+@font-face {
+    font-family: "trebuchetms";
+    src: url(fonts/TrebuchetMS.ttf);
+    font-weight: normal;
+    font-style: normal;
+  }
+  
+  @font-face {
+    font-family: "bebasneue";
+    src: url(fonts/BebasNeue.otf);
+    font-weight: normal;
+    font-style: normal;
+  }
+  
+  @font-face {
+    font-family: "WebSymbolsRegular";
+    src: url(fonts/websymbols-regular-webfont.woff);
+    src: url(fonts/websymbols-regular-webfont.woff?#iefix)
+        format(embedded- opentype),
+      url(fonts/websymbols-regular-webfont.eot) format(eot),
+      url(fonts/websymbols-regular-webfont.ttf) format(truetype),
+      url(fonts/websymbols-regular-webfont.svg#WebSymbolsRegular) format(svg);
+    font-weight: normal;
+    font-style: normal;
+  }
+
+  *{
+      margin:0px;
+      padding:0px;
+  }
+
+  body{
+      background-image: url(img/pattern.png);
+  }
+
+  .wrap{
+      margin:0px auto;
+      width:1250px;
+  
+  }
+
+  .gear , .icon{
+      font-family: "WebSymbolsRegular";
+  }
+
+#header{
+    width:100%;
+    height:70px;
+    background-color:black;
+    color:white;
+    font-family: "bebasneue"
+}
+
+#logo{
+    float:left;
+    width:200px;
+    background-color: #37bcf9;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 300ms;
+    margin:5px 0px 0px 20px;
+    overflow: hidde; /*De esta forma la animacion de la tuerca cuando se va para abajo se oculta, sin esta propiedad se mostraria*/
+}
+
+#logo h3{
+    font-size: 40px;
+    float:right;
+    margin-top: 5px;
+    transition: all 300ms;
+    margin-right: 65px;
+}
+
+#logo:hover h3{
+    animation: fromRight 500ms linear;
+    }
+
+    @keyframes fromRight{
+        from{
+            transform: translateX(200%);
+        }
+        to{
+            transform: translateX(0%)
+        }
+    }
+
+#logo .gear{
+    display: block;
+    float:left;
+    font-size: 30px;
+    margin-top: 8px;
+    margin-left: 26px;
+    animation-name: rotate-gear;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+
+@keyframes rotate-gear{
+    from{
+        transform:rotateZ(0deg)
+    }
+    to{
+        transform: rotateZ(360deg);
+    }
+}
+
+#logo:hover{
+    border-radius: 2px ;
+    color:black;
+    background-color: #ccc;
+}
+
+#logo:hover .gear{
+animation: fromBellow 500ms linear;
+}
+
+@keyframes fromBellow{
+    0%{
+        transform: translateY(0%);
+    }
+    50%{
+        transform: translateY(200%);
+    }
+    100%{
+        transform: translateY(0%);
+    }
+}
+
+
+
+
+#menu{
+    float:right;
+    margin-right: 15%;
+    height:70px; /*no influye tiene las mismas medidas que la caja contenedora*/
+}
+
+#menu ul  li{
+    font-size: 24px;
+    display: inline-block; /*al transformar los elementos en parte linea le quita el list-style a los li*/
+    margin:0px 20px 0px 20px;
+    letter-spacing: 2px;
+    line-height: 70px;
+}
+
+#menu ul li a{
+    color:white;
+    text-decoration: none;
+    display: block; /*La propiedad transform no se aplica a elementos en linea*/
+    transition: all 200ms;
+}
+
+#menu ul li a:hover{
+    color: #37bcf9;
+    transform:scale(1.2,1.2)
+}
+
+#banner{
+    width:97.5%;
+    height:100px;
+    border:10px solid rgb(255, 255, 255);
+    box-shadow: 0px 0px 1px grey;
+    background-image: url(img/bakbaner.png);
+    background-position: -200px -200px;
+    margin:20px auto;
+    animation: backBanner 10s linear;
+    overflow: hidden;
+}
+
+@keyframes backBanner{
+    0%{
+        background-position: 0px 0px /*Ponemos la imagen de fondo en la posicion que por defecto que viene*/
+    }
+    100%{
+        background-position: -200px -200px
+    }
+}
+
+#banner h1{
+    font-family: "BebasNeue";
+    text-align: center;
+    color:white;
+    font-size: 45px;
+    letter-spacing: 2px;
+    text-shadow:2px 2px 1px black;
+    font-weight: normal;
+    line-height: 100px;
+    animation:showText 5s linear;
+}
+
+@keyframes showText{
+    0%{transform: translateX(-600%) /*traslado a la izquierda*/
+        }
+    50%{
+        transform: translateX(600%) scale(5,5);
+        opacity: 1;
+
+    }
+    75%{
+        transform: translateX(-600%) scale(5,5);
+        opacity: 0;
+        text-shadow: none;
+        color:transparent; /*si no se cambian las propiedades mantienen las de la ultima regla*/
+}
+    100%{
+        transform: translate(0%) scale(1,1); /*escala original*/
+        opacity: 1;
+        text-shadow: 2px 2px 1px black;
+        color:white
+    }
+}
+        
+
+
+
+
+.card{
+    background-color: white;
+    width: 205px;
+    height:291px;
+    border:1px solid #ccc;
+    float: left;
+    margin:40px 20px 20px 20px;
+    cursor: pointer;
+    transition:all 300ms;
+    overflow: hidden;
+}
+
+.card:hover{
+    background:black;
+
+}
+
+.card:hover .icon{
+    font-size: 70px;
+    color:#37bcf9;
+    animation: showIcon 300ms linear
+
+}
+
+@keyframes showIcon{
+    from{
+        transform:translateY(-200%) /* -200px en el eje Y (vertical) lleva el elemento hacia arriba*/
+    }
+    to{
+        transform: translateY(0%)
+    }
+}
+
+
+.card:last-child{
+    margin:right:0px
+}
+
+.card .icon{
+    height:130px;
+    font-size: 50px;
+    line-height: 130px;
+    text-align: center;
+    transition: all 300ms;
+}
+
+.card .category{
+    height:50px;
+    font-family: "trebuchetms";
+    font-size: 21px;
+    font-weight: bold;
+    text-align: center;
+    color:#00538c;
+    transition: all 300ms
+}
+
+.card:hover .category{
+    color:white;
+    animation: showCategory 400ms linear
+}
+
+@keyframes showCategory{
+    from{
+        transform:translateY(-300%);
+        color:black;
+    }
+    to{
+        transform:translateY(0%)
+        color:white;
+    }
+}
+
+.card .description{
+    text-align: center;
+    color:#00538c;
+    font-family: "trebuchetms";
+    transition: all 300ms;
+}
+
+.card:hover .description{
+    color:white;
+    animation: show 400ms linear
+}
+
+@keyframes show{
+    from{
+        transform:translateX(-300%);
+        color:black
+    }
+    to{
+        transform:translateX(0%);
+        color:white;
+    }
+}
+
+#lateral{
+    width:300px;
+    min-height: 1200px;
+    font-family: "trebuchetsms";
+    float:right;
+    margin:20px 20px 20px 20px;
+}
+
+#lateral h3{
+    width:auto;
+    height:45px;
+    line-height: 49px;
+    background: url(img/pxgray.png), rgb(255, 255, 255);
+    box-shadow: 0px 1px 0px #393d3f, 1px 2px 0px #393d3f, 2px 3px 0px #393d3f,
+    3px 4px 0px #393d3f;
+    font-size: 30px;
+    font-family: "bebasneue";
+    font-weight: normal;
+    letter-spacing: 2px;
+    padding-left: 25px;
+    margin-top: 38px;
+    margin-bottom: 15px;
+}
+
+#lateral h3:first-child{
+    margin-top:0px;
+}
+
+#search{
+    width:90%;
+    height:30px;
+    margin:10px auto;
+    background-color: white;
+    border-radius: 5px;
+    border:1px solid #ccc;
+    box-shadow: 1px 1px 4px #ccc inset;
+}
+
+#search input[type="text"]{
+    width:85%;
+    height:30px;
+    border:none;
+    padding-left:5px;
+    border-radius: 5px;
+    background-color: transparent;
+    color:#ccc;
+    transition: all 300ms;
+
+}
+
+#lateral input[type="button"],
+#lateral input[type="submit"]{
+    height:30px;
+    border:none;
+    cursor: pointer;
+    font-size: 16px;
+    background-color: transparent;
+    border-left: 1px solid #ccc;
+    color:#555;
+    padding-left:6px;
+}
+
+#lateral input[type="text"]:focus{
+    color:#555;
+}
+
+.aside-box{
+    width:85%;
+    height:240px;
+    margin:0px auto;
+    margin-top: 20px;
+    padding-top: 20px;
+    background-color: white;
+    border:1px solid black;
+    box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.3), 0px 3px 7px rgba(0, 0, 0, 0.3),
+    0px 1px white inset, 0px -3px 2px rgba(0, 0, 0, 0.3) inset;
+    }
+
+    #Login input[type="email"],
+    #Login input[type="password"]{
+        display: block;
+        margin:0px auto;
+        width:82%;
+        height:30px;
+        border:1px solid #ccc;
+        box-shadow: 1px 1px 1px #ccc inset;
+        margin-top: 5px;
+        padding-left: 30px;
+
+    }
+
+#Login input[type="email"]:focus,
+#Login input [type="password"]:focus{
+    color:#555;
+    box-shadow: 1px 1px 1px grey inset;
+}
+
+#Login #user,
+#Login #password{
+    display: block;
+    position:absolute;
+    margin-left: 15px;
+    margin-top: 8px;
+    height:30px;
+}
+
+#Login #password{
+    margin-left: 18px;
+    margin-top: 12px;
+    font-size: 20px;
+}
+
+#Login input[type="submit"],
+#Login input[type="reset"]{
+    display: block;
+    width:100px;
+    height:35px;
+    margin-top: 20px;
+    color:white;
+    background: linear-gradient(to bottom, #3eb8e5 0%, #2ca0ca 100%);
+    border:1px solid #156785;
+    cursor: pointer;
+    font-family:"trebuchetms";
+    float:left;
+    margin-left:15px;
+    transition:all 300ms;
+    margin-bottom:20px;
+}
+
+#Login input[type="submit"]:hover,
+#Login input[type="reset"]:hover{
+    box-shadow: 0px 0px 3px grey;}
+
+    #Login a{
+        text-decoration: none;
+        margin-left: 18px;
+        display: block;
+        font-size: 14px;
+        color: #555;
+    }
+
+    #Login a:hover{
+        text-decoration: underline;
+        color:#2ca0ca;
+    }
+
+#social a {
+    display: block;
+    color: #333;
+    text-decoration: none;
+    font-size: 30px;
+    margin: 10px 0px 10px 20px;
+}
+
+#social{
+    height:190px;
+}
+
+#social .overlay{
+    display: block;
+    height:20px;
+    font-size: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    letter-spacing: 1px;
+    text-shadow: 0px 0px 1px #ccc;
+    border:3px solid white;
+    box-shadow: 0px 0px 4px #ccc;
+    background:#F4F7FE;
+    position: absolute;
+    padding:5px;
+    margin-left: 70px;
+    margin-top: -52px;
+    opacity: 0; /*esconde el elemento*/
+    transition: all 400ms;
+    transform:translateX(-80%)
+}
+
+#social div:hover .overlay{
+    transform:translateX(0%); /*vuelve a la posicion original que responde a los margenes que le pusimos no al margen por defecto*/
+    opacity:1;
+}
+
+
+
+#articles{
+    width:860px;
+    float:left;
+}
+
+#articles h2{
+width:100%;
+height:75px;
+line-height: 75px;
+text-align: center;
+font-family: "bebasneue";
+font-size: 40px;
+font-weight: normal;
+letter-spacing: 2px;
+background-image: url(img/pxgray.png);
+box-shadow: 0px 1px 0px #393d3f, 1px 2px 0px #393d3f, 2px 3px 0px #393d3f,
+3px 4px 0px #393d3f;
+margin: 20px 0px 15px 0px;}
+
+.clearfix{
+    float:none;
+    clear: both;
+}
+
+#articles article{
+    width:98%;
+    height:auto;
+    border:1px solid #ccc;
+    margin:40px auto;
+    padding:10px;
+    font-family: "trebuchems";
+    background-color:white;
+    color:black;
+    box-shadow: 1px 1px 2px #ddd;
+}
+
+#articles article h4{
+    font-size: 23px;
+    margin:3px;
+}
+
+#articles article h4 a{
+    text-decoration: none;
+    color:#00538c;
+}
+
+
+#articles article h4 a:hover{
+    text-decoration: underline;
+}
+
+#articles .data {
+    float: right;
+    background-color: #393d3f;
+    color:white;
+    height:30px;
+    margin:-10px; /*como la caja tiene un padding al poner margin:0px no logro que se pegue a la caja para esos usamos los margenes negativos*/
+    padding:4px;
+    font-size: 13px;
+    border-radius: 0px 0px 0px 5px;
+}
+
+#articles .data span{
+    margin:6px;
+}
+
+#articles article p{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-size: 15px;
+}
+
+#blog{
+    height:100px;
+    margin-top: 60px;
+    line-height: 100px;
+    text-align: center;
+    transition: all 1s;
+}
+
+#blog a{
+    font-family: "bebasneue";
+    font-size: 40px;
+    letter-spacing: 3px;
+    color: #00538c;
+    text-decoration: none;
+    transition:all 1s;
+}
+
+#blog:hover{
+    border:10px solid #37bcf9;
+    border-radius: 240px;
+    box-shadow: 0px 0px 10px gray;
+    background-color: #333;
+    animation: blink 10s infinite linear
+
+}
+
+@keyframes blink{
+    0%{
+        border:10px solid #37bcf9;
+    }
+    25%{ border:10px solid green
+
+    }
+    50%{
+        border:10px solid yellow;
+    }
+    75%{
+        border:10px solid white;
+    }
+    100%{
+        border:10px solid #333;
+    }
+}
+
+#blog:hover a{
+    text-shadow: 1px 1px 1px black, 1px 2px 2px black, 1px 3px 1px black, 1px 4px 1px black, 1px 5px 1px black, 1px 6px 1px black;
+color:white;
+}
+
+
+
+
+#footer{
+    width:100%;
+    height:470px;
+    background-color: black;
+    overflow: hidde;
+}
+
+
+#footer .wrap div{
+    float:left;
+    width:320px;
+    height:370px;
+    margin:40px;
+    text-align: center;
+    color:white;
+    font-family: "trebuchetms";
+}
+
+#footer a{
+    text-decoration: none;
+    color:#37bcf9;
+    transition: all 300ms;
+}
+
+#footer h5{
+    background: url(img/pxgray.png), white;
+    letter-spacing: 2px;
+    text-align: center;
+    font-family: "bebasneue";
+    font-size: 40px;
+    line-height: 55px;
+    color:black;
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+
+
+#footer ul{
+    text-align: left;
+    font-size: 25px;
+    margin:20px;
+}
+
+#footer ul li{
+    margin-top:10px;
+    padding:5px;
+    font-size: 25px;
+}
+
+#footer ul li a{
+    display: block;
+    height:40px;
+    transition: all 300ms;
+}
+
+#footer ul li:hover a{
+    padding-left: 40px;
+    color:white;
+    width: 100%;
+}
+
+
+#footer iframe{
+    width:100%;
+    height:300px;
+    margin-top: 10px;
+    border-radius: 5px;
+    border:5px solid white;
+    box-shadow: 0px 0px 5px grey;
+
+}
+
+
+#footer img{
+    margin-bottom: 15px;
+}
+
+#footer #browser img{
+    width:45px;
+}
+
+/*  */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
